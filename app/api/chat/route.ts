@@ -10,10 +10,11 @@ type ChatMessage = {
 export async function POST(req: Request) {
   const apiKey = process.env.GROQ_API_KEY;
 
+  // Never crash the build if the key is missing – just respond with an error
   if (!apiKey) {
     console.error("Missing GROQ_API_KEY env var");
     return NextResponse.json(
-      { error: "Missing GROQ_API_KEY" },
+      { error: "Chat service is not configured on this deployment." },
       { status: 500 }
     );
   }
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
   try {
     const { messages } = (await req.json()) as { messages: ChatMessage[] };
 
-    // Get live products from Stripe
+    // 1) Get live products from Stripe
     const products = await stripe.products.list({
       active: true,
       expand: ["data.default_price"],
@@ -49,8 +50,8 @@ export async function POST(req: Request) {
 
     const catalogText = JSON.stringify(catalog, null, 2);
 
-    // Call Groq chat completions API
-    const response = await fetch(
+    // 2) Call Groq HTTP API directly – no SDK
+    const groqRes = await fetch(
       "https://api.groq.com/openai/v1/chat/completions",
       {
         method: "POST",
@@ -87,23 +88,26 @@ RULES:
       }
     );
 
-    if (!response.ok) {
-      const text = await response.text();
-      console.error("Groq API error:", response.status, text);
+    if (!groqRes.ok) {
+      const text = await groqRes.text();
+      console.error("Groq API error:", groqRes.status, text);
       return NextResponse.json(
         { error: "Groq API error" },
         { status: 500 }
       );
     }
 
-    const data = await response.json();
+    const data = await groqRes.json();
     const reply: string =
-      data?.choices?.[0]?.message?.content ||
+      data?.choices?.[0]?.message?.content ??
       "Sorry, I couldn't generate a response.";
 
     return NextResponse.json({ reply });
   } catch (err) {
     console.error("Chat route error:", err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Server error" },
+      { status: 500 }
+    );
   }
 }
