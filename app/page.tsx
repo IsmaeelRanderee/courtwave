@@ -1,25 +1,16 @@
 import Image from "next/image";
-import { stripe } from "@/lib/stripe";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Star } from "lucide-react";
 
-export default async function Home() {
-  const products = await stripe.products.list({
-    expand: ["data.default_price"],
-    limit: 5,
-  });
-
+export default function Home() {
   return (
     <div>
       <section className="relative rounded-3xl bg-gradient-to-br from-neutral-100 to-neutral-200 py-12 sm:py-20 mb-24 shadow-inner">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#0A66FF11,transparent_60%)]" />
 
         <div className="mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-16 px-8 sm:px-16 max-w-7xl">
-
-
           <div className="space-y-6 relative">
-
             <div className="absolute -top-10 -left-10 w-48 h-48 bg-[#0A66FF22] blur-3xl opacity-40 pointer-events-none" />
 
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
@@ -41,7 +32,6 @@ export default async function Home() {
             </Button>
           </div>
 
-
           <div className="flex justify-center">
             <Image
               alt="Hero Image"
@@ -54,7 +44,6 @@ export default async function Home() {
         </div>
       </section>
 
-
       <section className="section-padding bg-background mb-20">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-12 md:mb-16">
@@ -66,10 +55,7 @@ export default async function Home() {
             </p>
           </div>
 
-
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-
-
             <Link
               href="/products"
               className="group relative h-56 md:h-72 rounded-2xl overflow-hidden 
@@ -78,7 +64,6 @@ export default async function Home() {
                    hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40
                    transition-all duration-500"
             >
-
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#ffffff22,transparent_55%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
@@ -93,7 +78,6 @@ export default async function Home() {
                 </p>
               </div>
             </Link>
-
 
             <Link
               href="/products"
@@ -118,7 +102,6 @@ export default async function Home() {
               </div>
             </Link>
 
-
             <Link
               href="/products"
               className="group relative h-56 md:h-72 rounded-2xl overflow-hidden 
@@ -141,7 +124,6 @@ export default async function Home() {
                 </p>
               </div>
             </Link>
-
           </div>
         </div>
       </section>
@@ -149,7 +131,6 @@ export default async function Home() {
       <section className="section-padding bg-background mb-24">
         <div className="mx-auto max-w-7xl px-8 sm:px-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
             <div className="space-y-6">
               <p className="text-xs font-semibold tracking-[0.25em] text-[#0A66FF]">
                 ABOUT COURTWAVE
@@ -193,7 +174,6 @@ export default async function Home() {
               </div>
             </div>
 
-
             <div className="relative">
               <div className="absolute -top-8 -right-6 w-40 h-40 bg-[#0A66FF22] blur-3xl pointer-events-none" />
               <div className="rounded-3xl border border-neutral-200 bg-white shadow-xl p-8 sm:p-10 space-y-6">
@@ -216,11 +196,8 @@ export default async function Home() {
         </div>
       </section>
 
-
-
       <section className="section-padding bg-muted/40 pt-8 md:pt-16">
         <div className="container mx-auto px-4 lg:px-6">
-
           <div className="text-center mb-12 md:mb-16">
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">
               PLAYER REVIEWS
@@ -231,9 +208,6 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-
-
-
             <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-elevated transition-all duration-500">
               <div className="flex gap-0.5 mb-5">
                 <Star className="h-4 w-4 fill-primary text-primary" />
@@ -243,7 +217,7 @@ export default async function Home() {
                 <Star className="h-4 w-4 fill-primary text-primary" />
               </div>
               <p className="text-foreground mb-6 leading-relaxed text-sm md:text-base">
-                "The best rackets I’ve ever used. Control, power, balance — everything feels world-class."
+                &quot;The best rackets I’ve ever used. Control, power, balance — everything feels world-class.&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm">
@@ -256,8 +230,6 @@ export default async function Home() {
               </div>
             </div>
 
-
-
             <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-elevated transition-all duration-500">
               <div className="flex gap-0.5 mb-5">
                 <Star className="h-4 w-4 fill-primary text-primary" />
@@ -266,7 +238,7 @@ export default async function Home() {
                 <Star className="h-4 w-4 fill-primary text-primary" />
               </div>
               <p className="text-foreground mb-6 leading-relaxed text-sm md:text-base">
-                "Amazing feel and responsiveness. Perfect for players who want more control in tight rallies."
+                &quot;Amazing feel and responsiveness. Perfect for players who want more control in tight rallies.&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm">
@@ -279,7 +251,6 @@ export default async function Home() {
               </div>
             </div>
 
-
             <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-elevated transition-all duration-500">
               <div className="flex gap-0.5 mb-5">
                 <Star className="h-4 w-4 fill-primary text-primary" />
@@ -289,7 +260,7 @@ export default async function Home() {
                 <Star className="h-4 w-4 fill-primary text-primary" />
               </div>
               <p className="text-foreground mb-6 leading-relaxed text-sm md:text-base">
-                "Instant improvement in my smashes! The balance and power transfer are unreal."
+                &quot;Instant improvement in my smashes! The balance and power transfer are unreal.&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm">
@@ -301,14 +272,9 @@ export default async function Home() {
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </section>
-
-
-
     </div>
   );
 }
