@@ -102,7 +102,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {/* VALUE 1 */}
+            
             <div className="group relative rounded-3xl border border-neutral-200 bg-white shadow-sm p-6 md:p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#0A66FF11,transparent_55%)] opacity-80 pointer-events-none" />
               <div className="relative space-y-2">
@@ -116,7 +116,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* VALUE 2 */}
+            
             <div className="group relative rounded-3xl border border-neutral-200 bg-white shadow-sm p-6 md:p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#0A66FF0F,transparent_55%)] opacity-80 pointer-events-none" />
               <div className="relative space-y-2">
@@ -130,7 +130,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* VALUE 3 */}
+            
             <div className="group relative rounded-3xl border border-neutral-200 bg-white shadow-sm p-6 md:p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#0A66FF11,transparent_55%)] opacity-80 pointer-events-none" />
               <div className="relative space-y-2">
