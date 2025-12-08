@@ -10,7 +10,7 @@ type ChatMessage = {
 export async function POST(req: Request) {
   const apiKey = process.env.GROQ_API_KEY;
 
-  // Never crash the build if the key is missing – just respond with an error
+  
   if (!apiKey) {
     console.error("Missing GROQ_API_KEY env var");
     return NextResponse.json(
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   try {
     const { messages } = (await req.json()) as { messages: ChatMessage[] };
 
-    // 1) Get live products from Stripe
+    
     const products = await stripe.products.list({
       active: true,
       expand: ["data.default_price"],
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
 
     const catalogText = JSON.stringify(catalog, null, 2);
 
-    // 2) Call Groq HTTP API directly – no SDK
+    
     const groqRes = await fetch(
       "https://api.groq.com/openai/v1/chat/completions",
       {
